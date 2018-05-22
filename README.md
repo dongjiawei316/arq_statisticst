@@ -1,2 +1,2 @@
 # arq_statisticst
-python
+使用python写的一个自动重传算法的仿真程序，开发环境是pycharm
