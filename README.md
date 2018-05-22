@@ -1,0 +1,2 @@
+# arq_statisticst
+python
