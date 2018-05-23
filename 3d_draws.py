@@ -13,9 +13,10 @@ def build_staticslayer(z_value):
     y = np.arange(1, 250, 5);
 
     y1 = np.divide(1000, y)
-    x, y1 = np.meshgrid(x, y1)
+    y2 = np.rint(y1)
 
-    z = np.exp(x *( (2*x - x ** 2)**y1))
+    x, y = np.meshgrid(x, y)
+    z = (x *( (2*x - x * x)**(1000/y)))
 
   #  x1 = np.multiply(2, x)
   #  x2 = np.power(x, 2)
@@ -25,8 +26,8 @@ def build_staticslayer(z_value):
   #  z2, z3 = np.meshgrid(z1, x)
   #  z = z2 + z3;
 
+    print(y2)
     print(z)
-
     return (x, y, z);
 
 def build_layer(z_value):
@@ -51,6 +52,7 @@ def build_gaussian_layer(mean, standard_deviation):
 # 具体函数方法可用 help(function) 查看，如：help(ax.plot_surface)
 x1, y1, z1 = build_staticslayer(0.2);
 ax.plot_surface(x1, y1, z1, rstride=1, cstride=1, color='green')
+#ax.plot_wireframe(x1, y1, z1, rstride=1, cstride=1, color='green')
 
 #x5, y5, z5 = build_layer(0.15);
 #ax.plot_surface(x5, y5, z5, rstride=1, cstride=1, color='pink')
@@ -66,4 +68,6 @@ ax.plot_surface(x1, y1, z1, rstride=1, cstride=1, color='green')
 
 #x3, y3, z3 = build_gaussian_layer(0, 1)
 #ax.plot_surface(x3, y3, z3, rstride=1, cstride=1, cmap='rainbow')
+#ax.view_init(elev=30,azim=10)#改变绘制图像的视角,即相机的位置,azim沿着z轴旋转，elev沿着y轴
+ax.autoscale_view()
 plt.show()
